@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start-dev": "node server.js",
-    "start": "pm2 start ecosystem.config.js --env production",
+    "start": "sudo pm2 start ecosystem.config.js --env production",
     "export": "next build && next export"
   },
   "dependencies": {
