@@ -18,11 +18,18 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Make zip file
+        run: zip -r ./$GITHUB_SHA.zip . -x *.git* *.gitignore .github/*
+        shell: bash
+
       - name: upload to s3
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: aws s3 sync . s3://next-deploy-maxkim --delete --exclude '.github/*' --exclude '.git/*' --exclude '.gitignore'
+        run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://next-deploy-maxkim
 
       - name: deploy to ec2
-        run: aws deploy create-deployment --application-name next-deploy --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name next-deploy --s3-location bucket=next-deploy-maxkim
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: aws deploy create-deployment --application-name next-deploy --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name next-deploy --s3-location bucket=next-deploy-maxkim,bundleType=zip,key=$GITHUB_SHA.zip
