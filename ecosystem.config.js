@@ -4,7 +4,7 @@ module.exports = {
       name: "maxTutorial",
       script: "./server.js",
       watch: true,
-      exec_mode: ‘cluster’,
+      exec_mode: "cluster",
       env_development: {
         NODE_ENV: "development",
       },
