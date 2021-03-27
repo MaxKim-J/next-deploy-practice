@@ -2,7 +2,6 @@ const express = require("express");
 const next = require("next");
 
 const dev = process.env.NODE_ENV !== "production";
-console.log(process.env.NODE_ENV);
 
 // Next App importing
 const app = next({ dev });
