@@ -4,6 +4,7 @@ module.exports = {
       name: "nextjs",
       script: "./server.js",
       watch: true,
+      exec_mode: "cluster",
       env_development: {
         NODE_ENV: "development",
       },
