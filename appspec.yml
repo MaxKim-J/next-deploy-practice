@@ -3,3 +3,8 @@ os: linux
 files:
   - source: /
     destination: /home/ubuntu/next
+
+hooks:
+  AfterInstall:
+    - location: execute-deploy.sh
+    - timeout: 180
