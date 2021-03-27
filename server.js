@@ -16,9 +16,9 @@ app
     server.get("*", (req, res) => {
       return handle(req, res);
     });
-    server.listen(80, (err) => {
+    server.listen(3000, (err) => {
       if (err) throw err;
-      console.log("localhost:80");
+      console.log("localhost:3000");
     });
   })
   .catch((error) => {
