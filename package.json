@@ -5,11 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start-dev": "node server.js",
+    "start": "pm2 start ecosystem.config.js --env production",
     "export": "next build && next export"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "next": "10.0.9",
+    "pm2": "^4.5.5",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   }
