@@ -15,7 +15,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build
+      - name: Build Next App
         run: npm run build
 
       - name: Make zip file
@@ -32,5 +32,5 @@ jobs:
       - name: upload to s3
         run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://next-deploy-maxkim
 
-      - name: deploy to ec2
+      - name: Deploy to ec2
         run: aws deploy create-deployment --application-name next-deploy --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name next-deploy --s3-location bucket=next-deploy-maxkim,bundleType=zip,key=$GITHUB_SHA.zip
