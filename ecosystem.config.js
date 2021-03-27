@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "maxTutorial",
+      name: "nextjs",
       script: "./server.js",
       watch: true,
       env_development: {
