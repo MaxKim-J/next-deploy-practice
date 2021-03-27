@@ -4,6 +4,7 @@ module.exports = {
       name: "nextjs",
       script: "./server.js",
       watch: true,
+      interpreter: "/home/ubuntu/.nvm/versions/node/v8.11.3/bin/node",
       env_development: {
         NODE_ENV: "development",
       },
